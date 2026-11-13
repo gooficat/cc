@@ -20,8 +20,8 @@ space my_space(_) {
 }
 main() {
 	my_space_my_var = 0;
-	print("%b\n", my_space_my_var);
-	print("%b\n", my_space::my_var);
+	std::printf("%b\n", my_space_my_var);
+	std::printf("%b\n", my_space::my_var);
 }
 ```
 
@@ -49,6 +49,8 @@ byte &my_var; /* this is constant */
 ```
 
 attribute for ownership with specified free function. omitting it will use `free` by default
+scope exit automatically calls deallocators on owned pointers.
+if casted to a mutable "ptr" it is dropped from the borrow checker.
 
 ```c
 byte own(free) &my_var;
@@ -65,5 +67,12 @@ struct my_struc {
 };
 
 my_struc mut own& my_struc_inst;
+
+```
+
+```c
+#def FOO(...)
+
+#end
 
 ```
