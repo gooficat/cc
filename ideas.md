@@ -9,7 +9,7 @@ implicit int does not exist. typeless functions map to void, and typeless vars a
 types are
 `byte` (smallest unit that can hold an ascii character, i.e. at least 7 bits),
 `word` (default integer size),
-`ptr` (intptr_t equivalent), used for raw pointer math. Like `void*` from canonical C, but with a scale factor of 1,
+`ptr` (intptr_t equivalent), used for pointer math. Like `void*` from canonical C, but with a scale factor of 1,
 `big` (larger integer. combines `long` and `long long`)
 
 namespaces exist, and they have user-chosen mangling and may be accessed under both inbuilt separator and direct name.
@@ -30,6 +30,12 @@ i.e.
 
 ```cc
 byte#u my_char;
+```
+
+floating points, by suffixing `word` or `big` with `#f`
+
+```cc
+word#f my_flt;
 ```
 
 references replacing plain pointers. address must be taken explicitly.
@@ -55,8 +61,8 @@ if casted to a mutable "ptr" it is dropped from the borrow checker.
 ```cc
 byte own(free) &my_var;
 byte own &my_var;
-byte mod &my_var;
-byte gaze &my_var;
+byte bor &my_var;
+byte bor &my_var;
 ```
 
 tagged types do not use tagged access, but anonymous structs still exist. Treated the same way as typedefs.
