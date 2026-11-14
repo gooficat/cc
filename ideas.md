@@ -14,7 +14,7 @@ types are
 
 namespaces exist, and they have user-chosen mangling and may be accessed under both inbuilt separator and direct name.
 
-```c
+```cc
 space my_space(_) {
 	byte my_var;
 }
@@ -28,13 +28,13 @@ main() {
 "unsigned" is done by suffixing the type itself with `#u`
 i.e.
 
-```c
+```cc
 byte#u my_char;
 ```
 
 references replacing plain pointers. address must be taken explicitly.
 
-```c
+```cc
 byte& my_var;
 
 my_func(byte& a_var) {
@@ -44,7 +44,7 @@ my_func(byte& a_var) {
 
 immutable by default
 
-```c
+```cc
 byte &my_var; /* this is constant */
 ```
 
@@ -52,7 +52,7 @@ attribute for ownership with specified free function. omitting it will use `free
 scope exit automatically calls deallocators on owned pointers.
 if casted to a mutable "ptr" it is dropped from the borrow checker.
 
-```c
+```cc
 byte own(free) &my_var;
 byte own &my_var;
 byte mod &my_var;
@@ -61,7 +61,7 @@ byte gaze &my_var;
 
 tagged types do not use tagged access, but anonymous structs still exist. Treated the same way as typedefs.
 
-```c
+```cc
 struct my_struc {
 
 };
@@ -70,7 +70,7 @@ my_struc mut own& my_struc_inst;
 
 ```
 
-```c
+```cc
 #def FOO(...)
 
 #end
